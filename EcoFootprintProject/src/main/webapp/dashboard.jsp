@@ -90,7 +90,7 @@
     <div id="sidebar-container">
         <div id="sidebar">
             <div class="user-info">
-                <img src="/profile.jpg" alt="Profile" class="user-image">
+                <img src="img/profile1.jpg" alt="Profile" class="user-image">
                 <span class="user-name">Ifah</span>
             </div>
 
