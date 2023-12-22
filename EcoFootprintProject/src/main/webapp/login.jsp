@@ -49,7 +49,7 @@
         <h2>Login</h2>
         <form action="#" method="post">
             <!-- Use the correct action URL pointing to the /login endpoint -->
-            <label for="username">Username:</label>
+            <label for="username">Test:</label>
             <input type="text" id="username" name="username" required>
     
             <label for="password">Password:</label>
