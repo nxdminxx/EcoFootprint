@@ -128,17 +128,17 @@
     <div id="sidebar-container">
         <div id="sidebar">
             <div class="user-info">
-                <img src="/profile.jpg" alt="Profile" class="user-image">
+                <img src="img/profile1.jpg" alt="Profile" class="user-image">
                 <span class="user-name">Ifah</span>
             </div>
 
             <ul>
                 <ul>
-                    <li><a href="${pageContext.request.contextPath}/dashboard/home">Dashboard</a></li>
-                    <li><a href="${pageContext.request.contextPath}/dashboard/footprintForm">Footprint Form</a></li>
-                    <li><a href="${pageContext.request.contextPath}/dashboard/myCarbonData">My Carbon Data</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Footprint Form</a></li>
+                    <li><a href="#">My Carbon Data</a></li>
                     <br><br>
-                    <li><a href="${pageContext.request.contextPath}/dashboard/logout">Logout</a></li>
+                    <li><a href="#">Logout</a></li>
                 </ul>
             </ul>
         </div>
