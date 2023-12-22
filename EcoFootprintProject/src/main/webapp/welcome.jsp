@@ -93,7 +93,7 @@
                 <img src="/profile.jpg" alt="Profile" class="user-image">
                 <span class="user-name">Ifah</span>
             </div>
-
+			<p>izzati edit</p>
             <ul>
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Footprint Form</a></li>
