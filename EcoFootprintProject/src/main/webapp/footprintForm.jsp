@@ -3,245 +3,240 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Dashboard</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #92bdf5;
-    }
+    <meta charset="ISO-8859-1">
+    <title>Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #92bdf5;
+        }
 
-    #dashboard-container {
-        display: flex;
-        width: 1400px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #508cd1;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+        #dashboard-container {
+            display: flex;
+            width: 1400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #508cd1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-    #sidebar-container {
-        display: flex;
-        width: 200px;
-        padding: 20px;
-        background-color: #f8f4f4;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+        #sidebar-container {
+            display: flex;
+            width: 200px;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
 
-    #content-container {
-        display: flex;
-        width: 1100px;
-        padding: 20px;
-        margin-left: 20px;
-        background-color: #f9f8f8;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+        #content-container {
+            display: flex;
+            width: 1100px;
+            padding: 20px;
+            margin-left: 20px;
+            background-color: #ffffff;
+            border-radius: 5px;
+        }
 
-    #sidebar {
-        width: 200px;
-        padding-right: 20px; /* Adjust spacing between sidebar and form content */
-    }
+        #sidebar {
+            width: 200px;
+            padding-right: 20px;
+        }
 
-    #sidebar ul {
-        list-style-type: none;
-        padding: 0;
-    }
+        #sidebar a {
+            color: #757575;
+            text-decoration: none;
+        }
 
-    #sidebar ul li {
-        padding: 10px;
-        background-color: #ddd;
-        margin-bottom: 5px;
-    }
+        #sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
 
-    .user-info {
-        display: flex;
-        align-items: center;
-    }
+        #sidebar ul li {
+            padding: 10px;
+            background-color: #ffffff;
+            margin-bottom: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-    .user-image {
-        width: 50px;
-        height: 50px;
-        margin-right: 10px;
-        border-radius: 50%; /* Make the image appear as a circle */
-        overflow: hidden; /* Ensure content is clipped to the rounded border */
-    }
+        #sidebar ul li:hover {
+            color: black;
+            background-color: #e6e6e6;
+            border-radius: 5px; /* Add rounded corners on hover */
+        }
 
-    .user-image img {
-        width: 100%; /* Make the image take up 100% of the container */
-        height: 100%; /* Make the image take up 100% of the container */
-        object-fit: cover; /* Maintain aspect ratio and cover the container */
-    }
+        #sidebar ul li:hover a {
+            color: black;
+        }
 
+        .user-info {
+            display: flex;
+            align-items: center;
+        }
 
-    .user-name {
-        flex-grow: 1;
-    }
+        .user-image {
+            width: 50px;
+            height: 50px;
+            margin-right: 10px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
 
-    .progress-bar {
-        width: 100%;
-        background-color: #ddd;
-        height: 20px;
-        border-radius: 5px;
-        margin-bottom: 10px;
-    }
+        .user-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
 
-    .progress {
-        width: 0;
-        height: 100%;
-        background-color: #4caf50;
-        border-radius: 5px;
-    }
+        .user-name {
+            flex-grow: 1;
+        }
 
-    .form-column {
-        display: inline-block;
-        width: 45%;
-        margin-right: 5%;
-    }
+        .user-name p {
+            margin: 0;
+        }
 
-    .form-step {
-        display: none;
-    }
+        .progress-bar {
+            width: 100%;
+            background-color: #ddd;
+            height: 20px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
 
-    button {
-        background-color: #4caf50;
-        color: white;
-        padding: 10px 15px;
-        margin-top: 10px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
+        .progress {
+            width: 0;
+            height: 100%;
+            background-color: #4caf50;
+            border-radius: 5px;
+        }
 
-    button:hover {
-        background-color: #45a049;
-    }
-</style>
+        .form-column {
+            display: inline-block;
+            width: 45%;
+            margin-right: 5%;
+        }
+
+        .form-step {
+            display: none;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Step Progress Bar Styles */
+        .step-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            width: 30px;
+            height: 30px;
+            background-color: #ddd;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .step.active {
+            background-color: #4caf50; /* Green color for active step */
+            color: #fff;
+        }
+    </style>
 </head>
 <body>
 
-<!-- Main Content with Sidebar -->
-<div id="dashboard-container">
+    <!-- Main Content with Sidebar -->
+    <div id="dashboard-container">
 
-    <div id="sidebar-container">
-        <div id="sidebar">
-            <div class="user-info">
-                <img src="img/profile1.jpg" alt="Profile" class="user-image">
-                <span class="user-name">Ifah</span>
-            </div>
+        <div id="sidebar-container">
+            <div id="sidebar">
+                <div class="user-info">
+                    <img src="img/profile1.jpg" alt="Profile" class="user-image">
+                    <div class="user-name">
+                        <p style="font-size: 10px">User ID: 555</p>
+                        <p style="font-weight: bold;">Irdina Sofea</p>
+                    </div>
+                </div>
 
-            <ul>
                 <ul>
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Footprint Form</a></li>
-                    <li><a href="#">My Carbon Data</a></li>
+                    <li><a href="dashboard.jsp">Dashboard</a></li>
+                    <li><a href="footprintForm.jsp">Footprint Form</a></li>
+                    <li><a href="myCarbonData.jsp">My Carbon Data</a></li>
                     <br><br>
-                    <li><a href="#">Logout</a></li>
+                    <li><a href="login.jsp">Logout</a></li>
                 </ul>
-            </ul>
+            </div>
         </div>
-    </div>
 
-    <div id="content-container">
-        <!-- Main Content -->
-        <div>
-            <h2>Carbon Footprint Form</h2>
-
-            <!-- Progress Bar -->
-            <div class="progress-bar">
-                <div class="progress" id="progress"></div>
+        <div id="content-container">
+            <!-- Step Progress Bar -->
+            <div class="step-progress">
+                <div class="step active" id="step1" onclick="showStep(1)">1</div>
+                <div class="step" id="step2" onclick="showStep(2)">2</div>
+                <div class="step" id="step3" onclick="showStep(3)">3</div>
             </div>
 
-            <!-- Multi-Step Form Content -->
-            <div id="form-container">
-                <form id="multi-step-form" action="api/footprint/save" method="post">
-                    <!-- Step 1 (Water Form) -->
-                    <div class="form-step" id="step-1">
-                        <h2>Step 1 - Water Form</h2>
-                        <div class="form-column">
-                            <label for="waterField">Water Field:</label>
-                            <input type="text" id="waterField" name="waterField" required>
-                        </div>
-                        <!-- Add more fields as needed -->
+            <!-- Main Content -->
+            <div>
+                <div class="form-step" id="waterFormStep">
+                    <h2>Carbon Footprint Form - Water Consumption</h2>
+                    <%@include file="waterForm.jsp" %>
+                </div>
 
-                        <button type="button" onclick="nextStep()">Next</button>
-                    </div>
+                <div class="form-step" id="electricityFormStep" style="display: none;">
+                    <h2>Carbon Footprint Form - Electricity Consumption</h2>
+                    <%@include file="electricityForm.jsp" %>
+                </div>
 
-                    <!-- Step 2 (Electricity Form) -->
-                    <div class="form-step" id="step-2">
-                        <h2>Step 2 - Electricity Form</h2>
-                        <div class="form-column">
-                            <label for="electricityField">Electricity Field:</label>
-                            <input type="text" id="electricityField" name="electricityField" required>
-                        </div>
-                        <!-- Add more fields as needed -->
-
-                        <button type="button" onclick="prevStep()">Previous</button>
-                        <button type="button" onclick="nextStep()">Next</button>
-                    </div>
-
-                    <!-- Step 3 (Recycle Form) -->
-                    <div class="form-step" id="step-3">
-                        <h2>Step 3 - Recycle Form</h2>
-                        <div class="form-column">
-                            <label for="recycleField">Recycle Field:</label>
-                            <input type="text" id="recycleField" name="recycleField" required>
-                        </div>
-                        <!-- Add more fields as needed -->
-
-                        <button type="button" onclick="prevStep()">Previous</button>
-                        <button type="submit">Submit</button>
-                    </div>
-                </form>
+                <div class="form-step" id="recycleFormStep" style="display: none;">
+                    <h2>Carbon Footprint Form - Recycle Information</h2>
+                    <%-- Include your recycle form content here --%>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
+    <script>
+        // JavaScript to toggle visibility of form steps
+        function showStep(step) {
+            document.querySelectorAll('.form-step').forEach(function (stepElement) {
+                stepElement.style.display = 'none';
+            });
 
-<script>
-    // Function to initialize the form steps
-    function initializeFormSteps() {
-        const formSteps = document.getElementsByClassName("form-step");
-        for (let i = 0; i < formSteps.length; i++) {
-            formSteps[i].style.display = "none";
+            document.querySelectorAll('.step').forEach(function (stepElement) {
+                stepElement.classList.remove('active');
+            });
+
+            document.getElementById('step' + step).classList.add('active');
+
+            if (step === 1) {
+                document.getElementById('waterFormStep').style.display = 'block';
+            } else if (step === 2) {
+                document.getElementById('electricityFormStep').style.display = 'block';
+            } else if (step === 3) {
+                document.getElementById('recycleFormStep').style.display = 'block';
+            }
         }
-
-        // Show the first form step initially
-        const initialStep = document.getElementById("step-1");
-        initialStep.style.display = "block";
-    }
-
-    // Function to update the progress bar based on the current step
-    function updateProgressBar(currentStep) {
-        const totalSteps = 3; // Update this to the total number of steps
-        const percent = (currentStep - 1) / (totalSteps - 1) * 100;
-        progress.style.width = percent + "%";
-    }
-
-    function loadStep(stepNumber) {
-        const currentStep = document.getElementById(`step-${stepNumber}`);
-        currentStep.style.display = "none";
-
-        const nextStepNumber = stepNumber + 1;
-        const nextStep = document.getElementById(`step-${nextStepNumber}`);
-        nextStep.style.display = "block";
-
-        // Update the progress bar
-        updateProgressBar(nextStepNumber);
-    }
-
-    // Function to handle form submission
-    function submitForm() {
-        const form = document.getElementById("multi-step-form");
-        form.submit();
-    }
-
-    // Initialize the form steps
-    initializeFormSteps();
-</script>
+    </script>
 
 </body>
 </html>

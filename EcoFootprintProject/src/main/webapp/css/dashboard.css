@@ -87,6 +87,10 @@ body {
     flex-grow: 1;
 }
 
+.user-name p {
+    margin: 0;
+}
+
 .card-container {
     display: flex;
     flex-wrap: wrap;
@@ -195,8 +199,7 @@ body {
 .card-graph p,
 .card-welcome p,
 .card-button1 p,
-.card-button2 p,
-.user-name p {
+.card-button2 p {
     margin: 0;
 }
 

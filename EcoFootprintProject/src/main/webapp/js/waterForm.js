@@ -37,13 +37,5 @@ function nextStep() {
     // For example, form validation, data processing, etc.
 
     // Redirect to the recyleForm.jsp page
-    window.location.href = 'recyleForm.jsp';
-}
-
-function previousStep() {
-    // Perform any necessary actions before redirecting
-    // For example, form validation, data processing, etc.
-
-    // Redirect to the waterForm.jsp page
-    window.location.href = 'waterForm.jsp';
+    window.location.href = 'electricityForm.jsp';
 }
