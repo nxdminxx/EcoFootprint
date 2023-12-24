@@ -292,7 +292,7 @@
 	        <div id="confirmationContainer"></div>
 	        <div class="button-container">
 	            <button class="previous-button" onclick="goToPreviousStep()">Previous</button>
-	            <button class="next-button" onclick="showStep(5)">Next</button>
+	            <button class="next-button" onclick="showStep(5)">Submit</button>
 	        </div>
 	    </div>
 	

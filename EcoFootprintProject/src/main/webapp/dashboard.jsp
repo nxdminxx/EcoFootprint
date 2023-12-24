@@ -85,7 +85,7 @@
 			            	<p>Get <span style ="color:#F0AD00">Track</span> Of Your</p>
 			            	<p style ="color:#F0AD00">Carbon Footprint</p>
 			            	<p>Monthly!</p>
-			                <button class="my-button1" style =>Track Now!</button>
+			                <button id = "trackButton" class="my-button1" style =>Track Now!</button>
 			            </div>
 			        </div>
 
@@ -102,7 +102,7 @@
 			            	<p>View My</p>
 			            	<p style = "color:#EB3939;">Carbon Footprint</p>
 			            	<p>Now!</p>
-			                <button class="my-button2">View Here</button>
+			                <button id = "ViewDataButton" class="my-button2">View Here</button>
 			            </div>
 			            <img src="img/dashboard report.png" alt="Profile" class="card-image">
 			        </div>
@@ -113,6 +113,18 @@
         </div>
         
     </div>
+
+<script>
+    document.getElementById('trackButton').addEventListener('click', function() {
+        // Redirect to footprintForm.jsp
+        window.location.href = 'footprintForm.jsp';
+    });
+    
+    document.getElementById('ViewDataButton').addEventListener('click', function() {
+        // Redirect to footprintForm.jsp
+        window.location.href = 'myCarbonData.jsp';
+    });
+</script>
 
 </body>
 </html>

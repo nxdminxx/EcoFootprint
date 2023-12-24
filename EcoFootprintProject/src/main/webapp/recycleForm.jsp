@@ -73,106 +73,115 @@
     		margin-bottom: 10px; /* Add margin for spacing between the icon and text */
     		color: #007bff; /* Change this to your desired color code */
 		}
-		.button-container {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 20px; /* Add bottom margin for spacing */
-        }
-
-        .button-container button {
-            padding: 10px;
-            width: 120px; /* Set a fixed width for the buttons */
-            background-color: #A5A5A5; /* Light grey color */
-            color: #fff;
-            border: none;
-            border-radius: 20px; /* Add rounded corners */
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .button-container button:hover {
-            background-color: #12276F; /* Dark blue color on hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
-        }
+		
+		.checkbox-container {
+	        display: flex;
+	        flex-direction: column;
+	    }
+	
+	    .checkbox-container label {
+	        display: flex;
+	        align-items: center;
+	        margin-bottom: 10px;
+	    }
+	
+	    .checkbox-container label span {
+	        margin-right: 10px;
+	        white-space: nowrap; /* Added to prevent text wrapping */
+	    }
+	
+	    .checkbox-container input[type="checkbox"] {
+	        margin-left: 5px; /* Adjusted margin-left */
+	    }
+	    
     </style>
 </head>
 
 <body>
 
-<h1>Calculate Your Carbon Footprint</h1>
-
-<!-- Recycle Consumption Form -->
-<form action="" method="post" enctype="multipart/form-data">
-
-    <!-- Left Side Inputs -->
-    <div class="column" style="grid-column: 1;">
-    <div class="input-containers">
-        <div style="display: flex; gap: 10px;">
-            <input type="text" id="startDate" name="startDate" placeholder="Start Date" required>
-            <input type="text" id="endDate" name="endDate" placeholder="End Date" required>
-        </div>
-    </div>
-    
-     <div class="input-containers">
-	    	<label for="typeRecycling">1. What type of recycling do you do:</label><br>
-        	<input type="text" id="typeRecycling" name="typeRecycling" required><br>
+	<!-- Recycle Consumption Form -->
+	<form action="" method="post" enctype="multipart/form-data">
+	
+	    <!-- Left Side Inputs -->
+	    <div class="column" style="grid-column: 1;">
+	    
+		    <div class="input-containers">
+		    	<label for="recyclePeriod">Recycle Period:</label><br>
+		        <div style="display: flex; gap: 10px;">
+		            <input type="text" id="startDate" name="startDate" placeholder="Start Date" required>
+		            <input type="text" id="endDate" name="endDate" placeholder="End Date" required>
+		        </div>
+		    </div>
+	    
+	     	<div class="input-containers">
+		    	<label for="typeRecycling">1. What type of recycling do you do:</label><br>
+	        	<input type="text" id="typeRecycling" name="typeRecycling" required><br>
+		    </div>
+		
+		    <div class="input-containers">
+		    	<label for="accumulatedTotalInKG">2. Accumulate total in KG:</label><br>
+	        	<input type="text" id="accumulatedTotalInKG" name="accumulatedTotalInKG" required><br>
+		    </div>
+	        
+	        <div class="input-containers">
+		    	<label for="describeMethod">3. Describe the  method:</label><br>
+	        	<textarea id="describeMethod" name="describeMethod"  rows="4" required></textarea><br>
+		    </div>
+		    
+		    <div class="input-containers">
+			    <label for="practicingHabit">4. How are you practicing recycling habits?</label><br>
+			    <div class="checkbox-container">
+			        <label>
+			            <span>Using Composite</span>
+			            <input type="checkbox" id="composite" name="recyclingHabits" value="composite">
+			        </label>
+			
+			        <label>
+			            <span>Separate Waste Type</span>
+			            <input type="checkbox" id="separateWaste" name="recyclingHabits" value="separateWaste">
+			        </label>
+			
+			        <label>
+			            <span>Pre-Loved Clothes</span>
+			            <input type="checkbox" id="preLoved" name="recyclingHabits" value="preLoved">
+			        </label>
+			    </div>
+			</div>
+	        
+	    </div>
+	
+	<!-- Middle Inputs -->
+	<div class="column" style="grid-column: 2;">
+		
+	    <div class="input-containers">
+	        <label for="accumulatedTotalInRM">5. Accumulated total in RM:</label><br>
+	        <input type="text" id="accumulatedTotalInRM" name="accumulatedTotalInRM" required><br>
 	    </div>
 	
 	    <div class="input-containers">
-	    	<label for="accumulatedTotalInKG">2. Accumulate total in KG:</label><br>
-        	<input type="text" id="accumulatedTotalInKG" name="accumulatedTotalInKG" required><br>
+	        <label for="challengePractice">6. What are your challenges in practicing recycling into your lifestyle?</label><br>
+	        <textarea id="challengePractice" name="challengePractice" rows="4" required></textarea><br>
 	    </div>
-        
-        <div class="input-containers">
-	    	<label for="describeMethod">3. Describe the  method:</label><br>
-        	<textarea id="describeMethod" name="describeMethod"  rows="4" required></textarea><br>
+	    
+	    <div class="input-containers">
+	            <label for="uploadProof">Please upload proof of your recycling activity</label>
+	            <div class="file-drop" id="fileDrop">
+	            	<span class="file-icon">&#128196;</span><br>
+	                <span>Drag and drop your file here or click to choose</span>
+	                <input type="file" id="uploadProof" name="uploadProof" accept=".jpg, .jpeg, .pdf" class="file-input" required>
+	            </div>
 	    </div>
-        
+	    
+	</div>
+
+    <!-- Right Side Inputs -->
+    <div class="column" style="grid-column: 3;">
+    	<div class="column" style="margin-top: 20px;">
+        <img src="img/recycleActivity.jpg" alt="Recycle Activity" style="max-width: 100%; height: auto; border: 2px solid black; padding-top: 10px;">
+    	</div>
     </div>
 
-<!-- Middle Inputs -->
-<div class="column" style="grid-column: 2;">
- 
-    4. How are you practicing recycling habits?<br>
-        <input type="checkbox" name=recyclingHabits value="composite">Using Composite<br>
-        <input type="checkbox" name=recyclingHabits value="seperateWaste">Separate Waste Type<br>
-        <input type="checkbox" name=recyclingHabits value="preLoved">Pre-Loved Clothes<br></br>
-        
- 
-    <div class="input-containers">
-        <label for="accumulatedTotalInRM">5. Accumulated total in RM:</label><br>
-        <input type="text" id="accumulatedTotalInRM" name="accumulatedTotalInRM" required><br>
-    </div>
-
-    <div class="input-containers">
-        <label for="challengePractice">6. What are your challenges in practicing recycling into your lifestyle?</label><br>
-        <textarea id="challengePractice" name="challengePractice" rows="4" required></textarea><br>
-    </div>
-    
-    <div class="input-containers">
-            <label for="uploadProof">Please upload proof of your recycling activity</label>
-            <div class="file-drop" id="fileDrop">
-            	<span class="file-icon">&#128196;</span><br>
-                <span>Drag and drop your file here or click to choose</span>
-                <input type="file" id="uploadProof" name="uploadProof" accept=".jpg, .jpeg, .pdf" class="file-input" required>
-            </div>
-        </div>
-</div>
-
-
-      
 </form>
-    <!-- Bottom Buttons -->
-	<div class="button-container">
-    <a href="electricityForm.jsp">
-        <button type="button" onclick="previousStep()">Previous</button>
-    </a>
-
-    <a href="calculate.jsp">
-        <button type="button" onclick="nextStep()">Calculate</button>
-    </a>
-</div>
 
 <!-- Include external JavaScript file -->
 <script src="recycleForm.js"></script>

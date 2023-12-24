@@ -31,11 +31,3 @@ fileInput.addEventListener('change', () => {
         console.log('Selected file:', files[0].name);
     }
 });
-
-function nextStep() {
-    // Perform any necessary actions before redirecting
-    // For example, form validation, data processing, etc.
-
-    // Redirect to the recyleForm.jsp page
-    window.location.href = 'electricityForm.jsp';
-}
