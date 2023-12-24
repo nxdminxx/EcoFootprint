@@ -96,6 +96,12 @@
 	.user-name p {
 	    margin: 0;
 	}
+	
+	 #form-container {
+            text-align: center;
+            margin-top: 20px;
+            margin-left:100px;
+        }
 </style>
 </head>
 <body>
@@ -126,9 +132,10 @@
     <div id="content-container">
         <!-- Main Content -->
         <div>
-            <h2>Welcome</h2>
 
             <div id="form-container">
+            
+             <%@include file="confirmation.jsp" %>
                 
             </div>
         </div>
