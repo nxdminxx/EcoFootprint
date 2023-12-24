@@ -19,9 +19,6 @@
             margin: auto;
             max-width: 1000px;
         }
-        h1 {
-        	text-align: center;
-        }
 
         .column {
             margin-bottom: 15px;
@@ -99,8 +96,6 @@
 </head>
 
 <body>
-
-<h1>Calculate Your Carbon Footprint</h1>
 
 <!-- Electricity Consumption Form -->
 <form action="" method="post" enctype="multipart/form-data">

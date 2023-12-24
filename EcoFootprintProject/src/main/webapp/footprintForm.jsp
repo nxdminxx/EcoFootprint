@@ -1,9 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="ISO-8859-1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <style>
         body {
@@ -32,6 +31,8 @@
 
         #content-container {
             display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
             width: 1100px;
             padding: 20px;
             margin-left: 20px;
@@ -97,7 +98,11 @@
         .user-name p {
             margin: 0;
         }
-
+        
+        h1 {
+        	text-align: center;
+        }
+        
         .progress-bar {
             width: 100%;
             background-color: #ddd;
@@ -113,18 +118,8 @@
             border-radius: 5px;
         }
 
-        .form-column {
-            display: inline-block;
-            width: 45%;
-            margin-right: 5%;
-        }
-
-        .form-step {
-            display: none;
-        }
-
         button {
-            background-color: #4caf50;
+            background-color: #1E3C72;
             color: white;
             padding: 10px 15px;
             margin-top: 10px;
@@ -134,15 +129,21 @@
         }
 
         button:hover {
-            background-color: #45a049;
+            background-color: red;
         }
 
         /* Step Progress Bar Styles */
         .step-progress {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            align-items: center; /* Align items horizontally */
             margin-bottom: 20px;
+        }
+
+        .step-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px; /* Add margin between steps */
         }
 
         .step {
@@ -154,17 +155,32 @@
             justify-content: center;
             align-items: center;
             font-weight: bold;
+            margin-bottom: 5px; /* Add margin between steps */
+            color: #000; /* Set default color for steps */
         }
 
-        .step.active {
-            background-color: #4caf50; /* Green color for active step */
+        .step.active, .step.visited {
+            background-color: #1E3C72;
             color: #fff;
+        }
+
+        .step-label {
+            text-align: center;
+        }
+
+        /* Additional style for step content */
+        .step-content {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .step-content.active {
+            display: block;
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Content with Sidebar -->
     <div id="dashboard-container">
 
         <div id="sidebar-container">
@@ -188,55 +204,150 @@
         </div>
 
         <div id="content-container">
-            <!-- Step Progress Bar -->
+            <h1>Calculate Your Carbon Footprint</h1>
             <div class="step-progress">
-                <div class="step active" id="step1" onclick="showStep(1)">1</div>
-                <div class="step" id="step2" onclick="showStep(2)">2</div>
-                <div class="step" id="step3" onclick="showStep(3)">3</div>
+                <div class="step-container">
+                    <div class="step" id="step1" onclick="showStep(1)">1</div>
+                    <div class="step-label">Water Consumption</div>
+                </div>
+                <div class="step-container">
+                    <div class="step" id="step2" onclick="showStep(2)">2</div>
+                    <div class="step-label">Electricity Consumption</div>
+                </div>
+                <div class="step-container">
+                    <div class="step" id="step3" onclick="showStep(3)">3</div>
+                    <div class="step-label">Recycle Consumption</div>
+                </div>
+                <div class="step-container">
+                    <div class="step" id="step4" onclick="showStep(4)">4</div>
+                    <div class="step-label">Confirmation</div>
+                </div>
+                <div class="step-container">
+                    <div class="step" id="step5" onclick="showStep(5)">5</div>
+                    <div class="step-label">Calculate Data</div>
+                </div>
+                <div class="step-container">
+                    <div class="step" id="step6" onclick="showStep(6)">6</div>
+                    <div class="step-label">Submission</div>
+                </div>
             </div>
 
-            <!-- Main Content -->
-            <div>
-                <div class="form-step" id="waterFormStep">
-                    <h2>Carbon Footprint Form - Water Consumption</h2>
-                    <%@include file="waterForm.jsp" %>
-                </div>
-
-                <div class="form-step" id="electricityFormStep" style="display: none;">
-                    <h2>Carbon Footprint Form - Electricity Consumption</h2>
-                    <%@include file="electricityForm.jsp" %>
-                </div>
-
-                <div class="form-step" id="recycleFormStep" style="display: none;">
-                    <h2>Carbon Footprint Form - Recycle Information</h2>
-                    <%-- Include your recycle form content here --%>
-                </div>
+            <!-- Step 1 Content -->
+            <div class="step-content" id="content1">
+                <div id="waterFormContainer"></div>
+                <button onclick="showStep(2)">Next</button>
             </div>
+
+            <!-- Step 2 Content -->
+            <div class="step-content" id="content2">
+                <!-- Empty container for electricityForm.jsp -->
+                <div id="electricityFormContainer"></div>
+                <button onclick="showStep(3)">Next</button>
+            </div>
+
+            <!-- Step 3 Content -->
+            <div class="step-content" id="content3">
+                <!-- Empty container for recycleForm.jsp -->
+                <div id="recycleFormContainer"></div>
+                <button onclick="showStep(4)">Next</button>
+            </div>
+
+            <!-- Step 4 Content -->
+            <div class="step-content" id="content4">
+                <!-- Empty container for confirmation.jsp -->
+                <div id="confirmationContainer"></div>
+                <button onclick="showStep(5)">Next</button>
+            </div>
+
+            <!-- Step 5 Content -->
+            <div class="step-content" id="content5">
+                <!-- Empty container for calculate.jsp -->
+                <div id="calculateContainer"></div>
+                <button onclick="showStep(6)">Next</button>
+            </div>
+
+            <!-- Step 6 Content -->
+            <div class="step-content" id="content6">
+                <!-- Empty container for complete.jsp -->
+                <div id="completeContainer"></div>
+            </div>
+
+<script>
+    // Function to load content dynamically
+    function loadContent(page, containerId) {
+        var container = document.getElementById(containerId);
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                container.innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", page, true);
+        xhttp.send();
+    }
+
+    // Store visited steps in an array
+    var visitedSteps = [];
+
+    function showStep(stepNumber) {
+        // Check if the step is already visited
+        if (!visitedSteps.includes(stepNumber)) {
+            visitedSteps.push(stepNumber);
+        }
+
+        // Reset all steps to inactive
+        var allSteps = document.querySelectorAll('.step');
+        allSteps.forEach(function (step) {
+            step.classList.remove('active', 'visited');
+        });
+
+        // Activate the clicked step and mark visited steps
+        visitedSteps.forEach(function (visitedStep) {
+            var step = document.getElementById('step' + visitedStep);
+            step.classList.add('visited');
+        });
+
+        // Activate the current step
+        var clickedStep = document.getElementById('step' + stepNumber);
+        clickedStep.classList.add('active');
+
+        // Hide all content
+        var allContent = document.querySelectorAll('.step-content');
+        allContent.forEach(function (content) {
+            content.classList.remove('active');
+        });
+
+        // Show the content for the current step
+        var currentContent = document.getElementById('content' + stepNumber);
+        currentContent.classList.add('active');
+
+        // Load specific content for each step
+        if (stepNumber === 1) {
+            loadContent('waterForm.jsp', 'waterFormContainer');
+        } else if (stepNumber === 2) {
+            loadContent('electricityForm.jsp', 'electricityFormContainer');
+        } else if (stepNumber === 3) {
+            loadContent('recycleForm.jsp', 'recycleFormContainer');
+        } else if (stepNumber === 4) {
+            loadContent('confirmation.jsp', 'confirmationContainer');
+        } else if (stepNumber === 5) {
+            loadContent('calculate.jsp', 'calculateContainer');
+        } else if (stepNumber === 6) {
+            loadContent('complete.jsp', 'completeContainer');
+        }
+    }
+
+    // Initialize progress bar when the page loads
+    function initializeProgress() {
+        // Assuming you want to start with step 1
+        showStep(1);
+    }
+
+    // Trigger initialization when the page loads
+    window.onload = initializeProgress;
+</script>
+
         </div>
     </div>
-
-    <script>
-        // JavaScript to toggle visibility of form steps
-        function showStep(step) {
-            document.querySelectorAll('.form-step').forEach(function (stepElement) {
-                stepElement.style.display = 'none';
-            });
-
-            document.querySelectorAll('.step').forEach(function (stepElement) {
-                stepElement.classList.remove('active');
-            });
-
-            document.getElementById('step' + step).classList.add('active');
-
-            if (step === 1) {
-                document.getElementById('waterFormStep').style.display = 'block';
-            } else if (step === 2) {
-                document.getElementById('electricityFormStep').style.display = 'block';
-            } else if (step === 3) {
-                document.getElementById('recycleFormStep').style.display = 'block';
-            }
-        }
-    </script>
-
 </body>
 </html>
