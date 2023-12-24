@@ -26,7 +26,6 @@
 <body>
 
     <div id="form-container">
-        <p>Confirmation Data</p>
         <img src="img/ConfirmationTerm.png" alt="Term and Condition">
         <br>
         <input type="checkbox" id="terms-checkbox" name="terms-checkbox">
