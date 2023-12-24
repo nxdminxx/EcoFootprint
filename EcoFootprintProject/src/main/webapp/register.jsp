@@ -1,67 +1,144 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    
 <!DOCTYPE html>
 <html>
 <head>
+<title>Register Page</title>
+
 <meta charset="ISO-8859-1">
-<title>Registration Page</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js">
 
-        #register-container {
-            width: 300px;
-            margin: 100px auto;
-            padding: 20px;
-            background-color: #fff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
+<style>
 
-        input {
-            width: 100%;
-            padding: 8px;
-            margin: 8px 0;
-            box-sizing: border-box;
-        }
+body {
+  background: #3230AC;
+  background: linear-gradient(to right, #0062E6, #33AEFF);
+}
 
-        button {
-            background-color: #4caf50;
-            color: white;
-            padding: 10px 15px;
-            margin-top: 10px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-        }
 
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
-</head>
-<body>
 
-<div id="register-container">
-    <h2>Register</h2>
-    <form action="#" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+}
+.arrow-button {
+  font-size: 24px; /* Adjust the size as needed */
+  color: #333; /* Adjust the color as needed */
+  /* Add other styles as needed */
+}
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+.register-image-container{
+    text-align: center;
+  }
 
-        <label for="contact">Contact:</label>
-        <input type="text" id="contact" name="contact" required>
 
-        <button type="submit">Register</button>
-    </form>
+</style>
 
-    <p>Already have an account? <a href="/login">Login</a></p>
-</div>
+<body style="background-color: #3230AC;">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-9 mx-auto">
+      
+        <div class="card flex-row my-5 border-0 shadow rounded-10 overflow-hidden">
+          
+          <!---Personal Details--->
+          <br>
+          <a href="javascript:history.back()" class="arrow-button">
+			<i class="fas fa-arrow-left"></i>
+			</a>
+          <div class="card-body p-5 p-sm-300">
+		    <h5 class="card-title text-center mb-5 fw-bold fs-5">Personal Details</h5>
+          <form>
 
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
+                <label for="floatingInputUsername">Identification Card</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
+                <label for="floatingInputEmail">Full Name</label>
+              </div>
+              
+			  <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
+                <label for="floatingInputEmail">Email Address</label>
+              </div>
+              
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
+                <label for="floatingInputEmail">Phone Number</label>
+              </div>
+              
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
+                <label for="floatingInputEmail">Status</label>
+              </div>
+              
+
+              <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+              </div>
+
+            </form>
+          </div>
+
+          
+          <!---Location Details--->      
+          <div class="card-body p-5 p-sm-300">
+            <h5 class="card-title text-center mb-5 fw-bold fs-5">Location Details</h5>
+            <form>
+
+              <div class="form-floating mb-3">
+                <input type="text" class="form-control" id="floatingInputUsername" placeholder="myusername" required autofocus>
+                <label for="floatingInputUsername">Full address</label>
+              </div>
+
+              <div class="form-floating mb-3">
+                <input type="email" class="form-control" id="floatingInputEmail" placeholder="name@example.com">
+                <label for="floatingInputEmail">Category (eg: Terraced House)</label>
+              </div>
+
+                  <div class="form-check mb-3">
+                  <input class="form-check-input" type="checkbox" value="" id="rememberPasswordCheck">
+                  <label class="form-check-label" for="rememberPasswordCheck">
+                    Active Geo Locator
+                  </label>
+                </div>
+                
+                <!---pop up message--->
+                
+				<div class="register-image-container">
+				  <img src="img/geolocator.png" class="register-image-container" alt="Geolocator Image">
+				</div>
+
+              <div class="d-grid mb-2">
+				<button class="btn btn-lg btn-primary btn-login fw-bold text-uppercase" type="button" onclick="redirectToProofImage()">Next</button>
+              </div>
+
+				<script>
+				    function redirectToProofImage() {
+				        // Redirect to ProofImage.jsp
+				        window.location.href = 'ProofImage.jsp';
+				    }
+				</script>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
-</html>
+
+
+
+
+    
+
+    </html>
