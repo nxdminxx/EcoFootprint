@@ -36,6 +36,12 @@
             margin-left: 20px;
             background-color: #ffffff;
             border-radius: 5px;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        h2 {
+            text-align: left;
         }
 
         #sidebar {
@@ -141,18 +147,8 @@
 		    color: white;
 		}
         
-        .chart-container {
-            background-color: #bbbcbc;
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-        }
-
-        .chart {
-            width: 45%;
-        }
     </style>
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -179,16 +175,11 @@
     </div>
 
     <div id="content-container">
-        <!-- Main Content -->
         <div>
-            <h2>My Carbon Data</h2>
-
-            <!-- Dummy Chart 1: Bar Chart -->
+        	<h2>My Carbon Data</h2>
+        	
             <div class="chart-container">
-                <canvas id="barChart" class="chart"></canvas>
-
-                <!-- Dummy Chart 2: Pie Chart -->
-                <canvas id="pieChart" class="chart"></canvas>
+                <canvas id="myChart" width="400" height="200"></canvas>
             </div>
 
             <table>
@@ -206,20 +197,20 @@
                     <td>250</td>
                     <td>Low</td>
                     <td>
-					    <a href="#" class="details-link">View Details</a>
-					    <button class="edit-button">Edit</button>
-					    <button class="delete-button">Delete</button>
-					</td>
+                        <a href="#" class="details-link">View Details</a>
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Delete</button>
+                    </td>
                 </tr>
                 <tr>
                     <td>February 2023</td>
                     <td>320</td>
                     <td>Medium</td>
                     <td>
-					    <a href="#" class="details-link">View Details</a>
-					    <button class="edit-button">Edit</button>
-					    <button class="delete-button">Delete</button>
-					</td>
+                        <a href="#" class="details-link">View Details</a>
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Delete</button>
+                    </td>
                 </tr>
                 </tbody>
             </table>
@@ -228,37 +219,32 @@
     </div>
 </div>
 
+<!-- Script to generate the dummy chart -->
 <script>
-    // Dummy Data for Charts
-    var barChartData = {
-        labels: ['January', 'February', 'March', 'April', 'May'],
+    // Dummy data for the chart
+    var chartData = {
+        labels: ['January 2023', 'February 2023'],
         datasets: [{
-            label: 'Monthly Carbon Data',
-            backgroundColor: '#508cd1',
-            data: [150, 220, 180, 200, 250]
+            label: 'Carbon Score',
+            backgroundColor: ['#92bdf5', '#508cd1'],
+            data: [250, 320]
         }]
     };
 
-    var pieChartData = {
-        labels: ['Low', 'Medium', 'High'],
-        datasets: [{
-            data: [30, 40, 30],
-            backgroundColor: ['#92bdf5', '#f8f4f4', '#f9f8f8']
-        }]
-    };
+    // Get the canvas element
+    var ctx = document.getElementById('myChart').getContext('2d');
 
-    // Create Bar Chart
-    var barChartCtx = document.getElementById('barChart').getContext('2d');
-    var barChart = new Chart(barChartCtx, {
+    // Create the chart
+    var myChart = new Chart(ctx, {
         type: 'bar',
-        data: barChartData
-    });
-
-    // Create Pie Chart
-    var pieChartCtx = document.getElementById('pieChart').getContext('2d');
-    var pieChart = new Chart(pieChartCtx, {
-        type: 'pie',
-        data: pieChartData
+        data: chartData,
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
     });
 </script>
 
