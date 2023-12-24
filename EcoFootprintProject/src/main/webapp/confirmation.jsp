@@ -6,31 +6,61 @@
     <meta charset="ISO-8859-1">
     <title>Confirmation</title>
     <style>
-        #form-container {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        img {
-            width: 650px;
+         #form-container {
+            position: relative;
+            width: 750px;
             height: 400px;
-            overflow: hidden;
-            margin-right: 10px;
+            border-radius: 15px;
+            overflow: show;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        
+        .termimage {
+           padding-top: 10px;
+           padding-left: 80px;
+           align-items: center;
+        }
+        
+        img {
+           overflow: hidden;
+           margin-right: 10px;
         }
 
-        #terms-checkbox {
-            margin-top: 20px;
+        .term-checkbox {
+           display: flex;
+           flex-direction: column;
+        }
+
+        .term-checkbox label {
+           display: flex;
+           align-items: center;
+        }
+
+        .term-checkbox label span {
+           margin-right: 150px;
+           white-space: nowrap;
+       }
+
+        .term-checkbox input[type="checkbox"] {
+           margin-left: 150px; 
         }
     </style>
 </head>
 <body>
 
     <div id="form-container">
-        <img src="img/ConfirmationTerm.png" alt="Term and Condition">
-        <br>
-        <input type="checkbox" id="terms-checkbox" name="terms-checkbox">
-        <label for="terms-checkbox">I agree to the terms and conditions and the privacy policy</label>
+    	<div class ="termimage">
+    		<img style = " width: 600px;height: 350px;" src="img/ConfirmationTerm.png" alt="Term and Condition">
+    	</div>
+        <div class="term-checkbox">
+	        <label>
+	        	<input type="checkbox" id="confirmation" name="confirmation" value="confirmation">
+	        	<span>I agree to the terms and conditions and the privacy policy</span>
+	        </label>
+        </div>
     </div>
 
 </body>
 </html>
+
+

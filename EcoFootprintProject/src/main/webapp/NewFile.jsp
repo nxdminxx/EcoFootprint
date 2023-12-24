@@ -1,15 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Dashboard</title>
+    <title>My Dashboard</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #92bdf5;
-        }
 
         #dashboard-container {
             display: flex;
@@ -20,24 +15,19 @@
             border: 1px solid #ccc;
             border-radius: 5px;
         }
-
-        #sidebar-container {
-            display: flex;
-            width: 200px;
-            padding: 20px;
-            background-color: #ffffff;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
+ 
         #content-container {
             display: flex;
             width: 1100px;
             padding: 20px;
             margin-left: 20px;
+            margin-right: 20px;
             background-color: #ffffff;
             border-radius: 5px;
+            flex-direction: column;
+            align-items: center;
         }
+        
 
         #sidebar {
             width: 200px;
@@ -64,7 +54,7 @@
         #sidebar ul li:hover {
             color: black;
             background-color: #e6e6e6;
-            border-radius: 5px; /* Add rounded corners on hover */
+            border-radius: 5px;
         }
 
         #sidebar ul li:hover a {
@@ -98,142 +88,158 @@
             margin: 0;
         }
 
-        .progress-bar {
+        table {
             width: 100%;
-            background-color: #ddd;
-            height: 20px;
-            border-radius: 5px;
-            margin-bottom: 10px;
+            max-width: 800px; /* Adjust the max-width as needed */
+            margin: 20px 0; /* Center the table with top and bottom margin */
+            border-collapse: collapse;
+            margin-top: 20px;
         }
 
-        .progress {
-            width: 0;
-            height: 100%;
-            background-color: #4caf50;
-            border-radius: 5px;
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
         }
 
-/*         .form-column {
-            display: inline-block;
-            width: 45%;
-            margin-right: 5%;
-        }
-
-        .form-step {
-            display: none;
-        } */
-
-        button {
-            background-color: #4caf50;
+        th {
+            background-color: #508cd1;
             color: white;
-            padding: 10px 15px;
-            margin-top: 10px;
-            border: none;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        /* Adjust the length of the Action column */
+        td .details-link,
+        td .edit-button,
+        td .delete-button {
+            display: inline-block;
+            padding: 8px;
+            margin: 4px;
+            text-decoration: none;
+            color: #333;
+            background-color: #eee;
+            border: 1px solid #ddd;
             border-radius: 4px;
-            cursor: pointer;
         }
 
-        button:hover {
-            background-color: #45a049;
-        }
-
-        /* Step Progress Bar Styles */
-        .step-progress {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .step {
-            width: 30px;
-            height: 30px;
-            background-color: #ddd;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: bold;
-        }
-
-        .step.active {
-            background-color: #4caf50; /* Green color for active step */
-            color: #fff;
+        td .edit-button,
+        td .delete-button {
+            background-color: #508cd1;
+            color: white;
         }
     </style>
+
 </head>
 <body>
 
-    <div id="dashboard-container">
+<div id="dashboard-container">
 
-        <div id="sidebar-container">
-            <div id="sidebar">
-                <div class="user-info">
-                    <img src="img/profile1.jpg" alt="Profile" class="user-image">
-                    <div class="user-name">
-                        <p style="font-size: 10px">User ID: 555</p>
-                        <p style="font-weight: bold;">Irdina Sofea</p>
-                    </div>
+    <div id="sidebar-container">
+        <div id="sidebar">
+            <div class="user-info">
+                <img src="img/profile1.jpg" alt="Profile" class="user-image">
+                <div class="user-name">
+                    <p style="font-size: 10px">User ID: 555</p>
+                    <p style="font-weight: bold;">Irdina Sofea</p>
                 </div>
-
-                <ul>
-                    <li><a href="dashboard.jsp">Dashboard</a></li>
-                    <li><a href="footprintForm.jsp">Footprint Form</a></li>
-                    <li><a href="myCarbonData.jsp">My Carbon Data</a></li>
-                    <br><br>
-                    <li><a href="login.jsp">Logout</a></li>
-                </ul>
             </div>
-        </div>
 
-        <div id="content-container">
-        
-        	<h2>Calculate your Carbon Footprint</h2>
-        	
-            <div class="step-progress">
-                <div class="step active" id="step1" onclick="showStep(1)">1</div>
-                <div class="step" id="step2" onclick="showStep(2)">2</div>
-                <div class="step" id="step3" onclick="showStep(3)">3</div>
-                
-               <%--  <div>
-	                <div class="form-step" id="waterFormStep">
-	                    <%@include file="waterForm.jsp" %>
-	                </div>
-	
-	                <div class="form-step" id="electricityFormStep" style="display: none;">
-	                    <%@include file="electricityForm.jsp" %>
-	                </div>
-	
-	                <div class="form-step" id="recycleFormStep" style="display: none;">
-	                    Include your recycle form content here
-	                </div>
-	            </div> --%>
-            </div>
-            
+            <ul>
+                <li><a href="dashboard.jsp">Dashboard</a></li>
+                <li><a href="footprintForm.jsp">Footprint Form</a></li>
+                <li><a href="myCarbonData.jsp">My Carbon Data</a></li>
+                <br><br>
+                <li><a href="login.jsp">Logout</a></li>
+            </ul>
         </div>
     </div>
 
-    <script>
-        // JavaScript to toggle visibility of form steps
-        function showStep(step) {
-            document.querySelectorAll('.form-step').forEach(function (stepElement) {
-                stepElement.style.display = 'none';
-            });
+    <div id="content-container">
+        <!-- Main Content -->
+        <div>
+            <h2>My Carbon Data</h2>
 
-            document.querySelectorAll('.step').forEach(function (stepElement) {
-                stepElement.classList.remove('active');
-            });
+            <!-- Dummy Chart 1: Bar Chart -->
+            <div class="chart-container">
+                <canvas id="barChart" class="chart"></canvas>
 
-            document.getElementById('step' + step).classList.add('active');
+                <!-- Dummy Chart 2: Pie Chart -->
+                <canvas id="pieChart" class="chart"></canvas>
+            </div>
 
-            if (step === 1) {
-                document.getElementById('waterFormStep').style.display = 'block';
-            } else if (step === 2) {
-                document.getElementById('electricityFormStep').style.display = 'block';
-            } else if (step === 3) {
-                document.getElementById('recycleFormStep').style.display = 'block';
-            }
-        }
-    </script>
+            <table>
+                <thead>
+                <tr>
+                    <th>Carbon Data</th>
+                    <th>Month</th>
+                    <th>Carbon Score</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>January 2023</td>
+                    <td>250</td>
+                    <td>Low</td>
+                    <td>
+                        <a href="#" class="details-link">View Details</a>
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Delete</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>February 2023</td>
+                    <td>320</td>
+                    <td>Medium</td>
+                    <td>
+                        <a href="#" class="details-link">View Details</a>
+                        <button class="edit-button">Edit</button>
+                        <button class="delete-button">Delete</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    // Dummy Data for Charts
+    var barChartData = {
+        labels: ['January', 'February', 'March', 'April', 'May'],
+        datasets: [{
+            label: 'Monthly Carbon Data',
+            backgroundColor: '#508cd1',
+            data: [150, 220, 180, 200, 250]
+        }]
+    };
+
+    var pieChartData = {
+        labels: ['Low', 'Medium', 'High'],
+        datasets: [{
+            data: [30, 40, 30],
+            backgroundColor: ['#92bdf5', '#f8f4f4', '#f9f8f8']
+        }]
+    };
+
+    // Create Bar Chart
+    var barChartCtx = document.getElementById('barChart').getContext('2d');
+    var barChart = new Chart(barChartCtx, {
+        type: 'bar',
+        data: barChartData
+    });
+
+    // Create Pie Chart
+    var pieChartCtx = document.getElementById('pieChart').getContext('2d');
+    var pieChart = new Chart(pieChartCtx, {
+        type: 'pie',
+        data: pieChartData
+    });
+</script>
 
 </body>
 </html>
