@@ -168,6 +168,7 @@
 </form>
     <!-- Bottom Buttons -->
 	<div class="button-container">
+		<a href="waterForm.jsp">
     	<button type="button" onclick="previousStep()">Previous</button>
     	
     	<a href="recyleForm.jsp">
