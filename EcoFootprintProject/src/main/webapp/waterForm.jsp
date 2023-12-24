@@ -69,28 +69,7 @@
     		margin-bottom: 10px; /* Add margin for spacing between the icon and text */
     		color: #007bff; /* Change this to your desired color code */
 		}
-		.button-container {
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 20px; /* Add bottom margin for spacing */
-        }
 
-        .button-container button {
-            padding: 10px;
-            width: 120px; /* Set a fixed width for the buttons */
-            background-color: #A5A5A5; /* Light grey color */
-            color: #fff;
-            border: none;
-            border-radius: 20px; /* Add rounded corners */
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .button-container button:hover {
-            background-color: #12276F; /* Dark blue color on hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
-        }
     </style>
 </head>
 
@@ -160,11 +139,7 @@
     </div>
       
 </form>
-    <!-- Bottom Buttons -->
-	<div class="button-container">
-    	<a href="electricityForm.jsp">
-    	<button type="button" onclick="nextStep()">Next</button></a>
-	</div>
+
 <!-- Include external JavaScript file -->
 <script src="waterForm.js"></script>
 </body>
