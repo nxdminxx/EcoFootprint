@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -5,117 +6,76 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>My Dashboard</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #92bdf5;
-    }
+  <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
 
-    #dashboard-container {
-        display: flex;
-        width: 1400px;
-        margin: 50px auto;
-        padding: 20px;
-        background-color: #508cd1;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+        .rounded-container {
+            position: relative;
+            width: 750px;
+            height: 500px;
+            padding-bottom: 90px;
+            border-radius: 15px;
+            overflow: show;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
-    #sidebar-container {
-        display: flex;
-        width: 200px;
-        padding: 20px;
-        background-color: #f8f4f4;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
+        .rounded-container img {
+            object-fit: contain; /* Keeps the aspect ratio and makes the image fit within the container */
+            width: 100%;
+            height: 100%;
+            max-width: 100%; /* Ensure the image doesn't exceed its original width */
+            max-height: 100%;
+            padding-bottom : 30px;
+        }
 
-    #content-container {
-        display: flex;
-        width: 1100px;
-        padding: 20px;
-        margin-left: 20px;
-        background-color: #f9f8f8;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-    }
-
-    #sidebar {
-        width: 200px;
-        padding-right: 20px; /* Adjust spacing between sidebar and form content */
-    }
-
-    #sidebar ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    #sidebar ul li {
-        padding: 10px;
-        background-color: #ddd;
-        margin-bottom: 5px;
-    }
-
-    .user-info {
-        display: flex;
-        align-items: center;
-    }
-
-    .user-image {
-        width: 50px;
-        height: 50px;
-        margin-right: 10px;
-        border-radius: 50%; /* Make the image appear as a circle */
-        overflow: hidden; /* Ensure content is clipped to the rounded border */
-    }
-
-    .user-image img {
-        width: 100%; /* Make the image take up 100% of the container */
-        height: 100%; /* Make the image take up 100% of the container */
-        object-fit: cover; /* Maintain aspect ratio and cover the container */
-    }
-
-
-    .user-name {
-        flex-grow: 1;
-    }
-
-</style>
+        .container-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+     		font-weight: bold;
+            color: #E34343;
+            padding-bottom: 60px;
+            text-align: center;
+            font-size: 30px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        
+        }
+        .small-text{
+        	text-align: center;
+        	text-color: black;
+        }
+        p{
+        	
+        	bottom: 0;
+            left: 20px;
+        	padding-bottom: 20px;
+            color: black;
+            text-align: center;
+            font-size: 15px;
+        }
+    </style>
 </head>
 <body>
 
-<!-- Main Content with Sidebar -->
-<div id="dashboard-container">
-
-    <div id="sidebar-container">
-        <div id="sidebar">
-            <div class="user-info">
-               	<img src="img/profile1.jpg" alt="Profile" class="user-image">
-                <span class="user-name">Ifah</span>
-            </div>
-
-            <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Footprint Form</a></li>
-                <li><a href="#">My Carbon Data</a></li>
-                <br><br>
-                <li><a href="#">Logout</a></li>
-            </ul>
-        </div>
-    </div>
-
-    <div id="content-container">
-        <!-- Main Content -->
-        <div>
-            <h2>Calculate</h2>
-
-            <div id="form-container">
-                
-            </div>
-        </div>
-    </div>
+<div class="rounded-container">
+    <img src="img/calculator imeg.png" alt="Image">
+    
+    <div class="container-title">Your Data Is Being Calculated Now !</div>
+    <p>The process may take a few minutes. <br>
+    You will be automatically directed to next page upon completing</p>
+    
+    
 </div>
-
 
 </body>
 </html>
