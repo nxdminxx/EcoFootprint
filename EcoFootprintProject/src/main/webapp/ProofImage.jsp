@@ -112,7 +112,7 @@ body {
           <script>
 			function redirectToTermsAndCondition() {
 			// Redirect to TermsAndCondition.jsp
-			window.location.href = 'TermsAndCondition.jsp';
+			window.location.href = 'termRegister.jsp';
 			}
 		 </script>
           
