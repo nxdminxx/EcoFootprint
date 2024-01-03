@@ -12,21 +12,19 @@ public class Water {
 	private long waterPropFactor;
 	private byte[] waterBill;
 	
-	public Water() {
 
-	    }
-
-	public Water(int waterId, double waterUsageRM, double waterUsageM3, String waterMethods, String waterPractices, String waterMonth, long waterPropFactor, byte[] waterBill) {
-	    this.waterId = waterId;
-	    this.waterUsageRM = waterUsageRM;
-	    this.waterUsageM3 = waterUsageM3;
-	    this.waterMethods = waterMethods;
-	    this.waterPractices = waterPractices;
-	    this.waterMonth = waterMonth;
-	    this.waterPropFactor = waterPropFactor;
-	    this.waterBill = waterBill;
+	public Water(int waterId ,int waterNumOfDays, double waterUsageRM, double waterUsageM3, String waterMethods, String waterPractices, String waterMonth, long waterPropFactor, byte[] waterBill) {
+		  this.waterId = waterId;
+		  this.waterNumOfDays = waterNumOfDays;
+		  this.waterUsageRM = waterUsageRM;
+		  this.waterUsageM3 = waterUsageM3;
+		  this.waterMethods = waterMethods;
+		  this.waterPractices = waterPractices;
+		  this.waterMonth = waterMonth;
+		  this.waterPropFactor = waterPropFactor;
+		  this.waterBill = waterBill;
 	}
-	    
+
 	public int getWaterId() {
 		return waterId;
 	}
