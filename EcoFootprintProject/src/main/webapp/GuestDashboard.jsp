@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Test</title>
+<title>Guest Dashboard</title>
 <style>
 	body {
 	    font-family: Arial, sans-serif;

@@ -165,7 +165,7 @@
             </div>
 
             <ul>
-                <li><a href="dashboard.jsp">Dashboard</a></li>
+                <li><a href="UserDashboard.js">Dashboard</a></li>
                 <li><a href="footprintForm.jsp">Footprint Form</a></li>
                 <li><a href="myCarbonData.jsp">My Carbon Data</a></li>
                 <br><br>
