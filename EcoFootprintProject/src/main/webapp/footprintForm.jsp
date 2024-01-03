@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Footprint Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -220,7 +220,7 @@
             </div>
 
             <ul>
-                <li><a href="dashboard.jsp">Dashboard</a></li>
+                <li><a href="UserDashboard.js">Dashboard</a></li>
                 <li><a href="footprintForm.jsp">Footprint Form</a></li>
                 <li><a href="myCarbonData.jsp">My Carbon Data</a></li>
                 <br><br>

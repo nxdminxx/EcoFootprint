@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Confirmation</title>
+	<title>Footprint Form</title>
     <style>
          #form-container {
             position: relative;

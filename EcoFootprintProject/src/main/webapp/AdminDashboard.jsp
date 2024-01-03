@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Test</title>
+<title>Admin Dashboard</title>
 <style>
 	body {
 	    font-family: Arial, sans-serif;
@@ -114,15 +114,14 @@
                 <div class="user-info">
                     <img src="img/profile1.jpg" alt="Profile" class="user-image">
                     <div class="user-name">
-                        <p style="font-size: 10px">User ID: 555</p>
-                        <p style="font-weight: bold;">Irdina Sofea</p>
+                        <p style="font-size: 10px">Admin ID: 782>
+                        <p style="font-weight: bold;">Admin
                     </div>
                 </div>
 
                 <ul>
-                    <li><a href="dashboard.jsp">Dashboard</a></li>
-                    <li><a href="footprintForm.jsp">Footprint Form</a></li>
-                    <li><a href="myCarbonData.jsp">My Carbon Data</a></li>
+                    <li><a href="AdminDashboard.jsp">Dashboard</a></li>
+                    <li><a href="ManageUser.jsp">ManageUser</a></li>
                     <br><br>
                     <li><a href="login.jsp">Logout</a></li>
                 </ul>

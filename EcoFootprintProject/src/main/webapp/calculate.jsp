@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Confirmation</title>
+	<title>Footprint Form</title>
     <style>
         #form-container {
             position: relative;
@@ -19,8 +19,8 @@
            padding-top: 30px;
            padding-left: 220px;
         }
-		
-		.imagebox img {
+  
+  .imagebox img {
             width: 300px;
             height: 250px;
             overflow: hidden;
@@ -28,7 +28,7 @@
         }
         
         .detail {
-        	text-align: center;
+         text-align: center;
             text-align: center;
             font-size: 15px;
         }
@@ -38,15 +38,15 @@
 <body>
 
     <div id="form-container">
-    	<div class ="imagebox">
-    		<img src="img/calculator imeg.png" alt="Calculation">
-    	</div>
+     <div class ="imagebox">
+      <img src="img/calculator imeg.png" alt="Calculation">
+     </div>
          <div class="detail">
-	         <p>The process may take a few minutes.<br>
-		    	You will be automatically directed to next page upon completing</p>
-	       	<span style ="font-weight: bold;color: #E34343;font-size: 30px;">Your Data Is Being Calculated Now !</span>
+          <p>The process may take a few minutes.<br>
+       You will be automatically directed to next page upon completing</p>
+         <span style ="font-weight: bold;color: #E34343;font-size: 30px;">Your Data Is Being Calculated Now !</span>
         </div>
-	    
+     
     </div>
 
 </body>
