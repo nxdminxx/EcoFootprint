@@ -3,10 +3,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Footprint Form</title>
-<style>
-      #form-container {
+    <meta charset="ISO-8859-1">
+	<title>Footprint Form</title>
+    <style>
+        #form-container {
             position: relative;
             width: 750px;
             height: 420px;
@@ -19,8 +19,8 @@
            padding-top: 30px;
            padding-left: 220px;
         }
-		
-		.imagebox img {
+  
+  .imagebox img {
             width: 300px;
             height: 250px;
             overflow: hidden;
@@ -28,25 +28,26 @@
         }
         
         .detail {
-        	text-align: center;
+         text-align: center;
             text-align: center;
             font-size: 15px;
         }
 
-</style>
+    </style>
 </head>
 <body>
 
-            <div id="form-container">
-		    	<div class ="imagebox">
-		    		<img src="img/dashboard generate.png" alt="Dashboard Update">
-		    	</div>
-		         <div class="detail">
-			         <p>Thank you for taking the time to fill the form.<br>Towards the Low Carbon Future Together</p>
-			       	<span style ="font-weight: bold;color: orange;font-size: 30px;">Your Dashboard Has Been Updated</span>
-		        </div>
-			    
-		    </div>
+    <div id="form-container">
+     <div class ="imagebox">
+      <img src="img/calculator imeg.png" alt="Calculation">
+     </div>
+         <div class="detail">
+          <p>The process may take a few minutes.<br>
+       You will be automatically directed to next page upon completing</p>
+         <span style ="font-weight: bold;color: #E34343;font-size: 30px;">Your Data Is Being Calculated Now !</span>
+        </div>
+     
+    </div>
 
 </body>
 </html>

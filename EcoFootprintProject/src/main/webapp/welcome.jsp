@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>My Dashboard</title>
+<title>Template</title>
 <style>
 	body {
 	    font-family: Arial, sans-serif;
@@ -130,14 +130,10 @@
     </div>
 
     <div id="content-container">
-        <!-- Main Content -->
         <div>
+				
+				template container
 
-            <div id="form-container">
-            
-             <%@include file="confirmation.jsp" %>
-                
-            </div>
         </div>
     </div>
 </div>
