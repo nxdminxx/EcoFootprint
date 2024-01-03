@@ -10,5 +10,5 @@ public interface RecycleService {
 	 Recycle getRecycleById(int recycleId);
 	 Recycle addRecycle(final Recycle recycle);
 	 Recycle updateRecycle(final Recycle recycle);
-	 public boolean deleteProduct(int recycleId);
+	 public boolean deleteRecyle(int recycleId);
 }
