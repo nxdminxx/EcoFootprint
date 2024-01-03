@@ -12,6 +12,9 @@ import java.util.List;
 @Service
 public class WaterServiceImpl implements WaterService {
 
+	@Autowired
+    private JdbcTemplate jdbcTemplate;  //dalam file config.java
+	
 	// Simulate a water table with internal memory
     private final List<Water> waterList = new ArrayList<>();
 
@@ -21,32 +24,38 @@ public class WaterServiceImpl implements WaterService {
         insertWater(28, 90.0, 45.0, "Twice a week", "Use a low-flow showerhead", "February 2024", 1L, new byte[]{});
         // Add more sample data as needed
     }
-
+    
     private void insertWater(int numOfDays, double usageRM, double usageM3, String methods,
-                             String practices, String month, long propFactor, byte[] bill) {
-        Water water = new Water(0, numOfDays, usageRM, usageM3, methods, practices, month, propFactor, bill);
+            String practices, String month, long propFactor, byte[] bill) {
+	Water water = new Water(0, numOfDays, usageRM, usageM3, methods, practices, month, propFactor, bill);
+	
+	if (waterList.isEmpty()) {
+	water.setWaterId(1);
+	} else {
+	int lastWaterId = waterList.get(waterList.size() - 1).getWaterId();
+	water.setWaterId(lastWaterId + 1);
+	}
+	
+	waterList.add(water);
+	}
 
-        if (waterList.isEmpty()) {
-            water.setWaterId(1);
-        } else {
-            int lastWaterId = waterList.get(waterList.size() - 1).getWaterId();
-            water.setWaterId(lastWaterId + 1);
-        }
-
-        waterList.add(water);
+    
+    private void insertWaterIntoDatabase(Water water) {
+        String sql = "INSERT INTO water (waterId, WaterNumOfDays, usage_rm, usage_m3, methods, practices, month, prop_factor, bill) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(
+                sql,
+                
+                water.getWaterId(),
+                water.getWaterNumOfDays(),
+                water.getWaterUsageRM(),
+                water.getWaterUsageM3(),
+                water.getWaterMethods(),
+                water.getWaterPractices(),
+                water.getWaterMonth(),
+                water.getWaterPropFactor(),
+                water.getWaterBill()
+        );
     }
-
-//    public List<Water> getAllWater(int waterId) {
-//        List<Water> result = new ArrayList<>();
-//        
-//        for (Water water : waterList) {
-//            if (water.getWaterId() == waterId) {
-//                result.add(water.copy());
-//            }
-//        }
-//        
-//        return result;
-//    }
 
     @Override
     public Water addWater(Water water) {
@@ -59,17 +68,81 @@ public class WaterServiceImpl implements WaterService {
 
         if (getWaterById(water.getWaterId()) == null) {
             waterList.add(water);
+            // Insert into database
+            insertWaterIntoDatabase(water);
             return water;
         }
 
         return null;
     }
 
+    // Method to fetch all water records from the database
+    private List<Water> getAllWaterFromDatabase() {
+        String sql = "SELECT * FROM water";
+        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Water.class));
+    }
+    
     @Override
     public List<Water> getAllWater() {
-        return Collections.unmodifiableList(waterList);
+        // Fetch all water records from the database
+        return Collections.unmodifiableList(getAllWaterFromDatabase());
+    }
+     
+    // Method to update a water record in the database
+    private void updateWaterInDatabase(Water water) {
+        String sql = "UPDATE water SET num_of_days=?, usage_rm=?, usage_m3=?, methods=?, " +
+                "practices=?, month=?, prop_factor=?, bill=? WHERE water_id=?";
+        jdbcTemplate.update(
+                sql,
+                water.getWaterNumOfDays(),
+                water.getWaterUsageRM(),
+                water.getWaterUsageM3(),
+                water.getWaterMethods(),
+                water.getWaterPractices(),
+                water.getWaterMonth(),
+                water.getWaterPropFactor(),
+                water.getWaterBill(),
+                water.getWaterId()
+        );
     }
 
+    @Override
+    public Water updateWater(Water water) {
+        // Update the water record in the database
+        updateWaterInDatabase(water);
+
+        // Update the water record in the in-memory list (if present)
+        Water found = getWaterById(water.getWaterId());
+        if (found != null) {
+            found.assign(water);
+            return found;
+        }
+
+        return null;
+    }
+
+    // Method to delete a water record from the database based on waterId
+    private void deleteWaterFromDatabase(int waterId) {
+        String sql = "DELETE FROM water WHERE water_id=?";
+        jdbcTemplate.update(sql, waterId);
+    }
+
+    
+    @Override
+    public boolean deleteWater(int waterId) {
+        // Delete the water record from the database
+        deleteWaterFromDatabase(waterId);
+
+        // Remove the water record from the in-memory list (if present)
+        Water found = getWaterById(waterId);
+        if (found != null) {
+            waterList.remove(found);
+            return true;
+        }
+
+        return false;
+    }
+    
     @Override
     public Water getWaterById(int waterId) {
         for (Water water : waterList) {
@@ -77,27 +150,6 @@ public class WaterServiceImpl implements WaterService {
                 return water;
         }
         return null;
-    }
-
-    @Override
-    public Water updateWater(Water water) {
-        Water found = getWaterById(water.getWaterId());
-        if (found == null)
-            return null;
-
-        found.assign(water);
-
-        return found;
-    }
-
-    @Override
-    public boolean deleteWater(int waterId) {
-        Water found = getWaterById(waterId);
-        if (found == null) return false;
-
-        waterList.remove(found);
-
-        return true;
     }
 
     @Override
