@@ -82,28 +82,28 @@
     <!-- Left Side Inputs -->
     <div class="column" style="grid-column: 1;">
 	    <div class="input-containers">
-	    	<label for="daysPerMonth">1. Number of days for each month:</label><br>
-        	<input type="text" id="daysPerMonth" name="daysPerMonth" required><br>
+	    	<label for="electricityNumOfDays">1. Number of days for each month:</label><br>
+        	<input type="text" id="electricityNumOfDays" name="electricityNumOfDays" required><br>
 	    </div>
         
         <div class="input-containers">
-	    	<label for="electricUsageRM">2. Current electric usage value in RM:</label><br>
-        	<input type="text" id="electricUsageRM" name="electricUsageRM" required><br>
+	    	<label for="electricityUsageRM">2. Current electric usage value in RM:</label><br>
+        	<input type="text" id="electricityUsageRM" name="electricityUsageRM" required><br>
 	    </div>
 
 		<div class="input-containers">
-	    	<label for="electricUsageKWh">3. Current electric usage value in kWh:</label><br>
-            <input type="text" id="electricUsageKWh" name="electricUsageKWh" required><br>
+	    	<label for="electricityUsageKWH">3. Current electric usage value in kWh:</label><br>
+            <input type="text" id="electricityUsageKWH" name="electricityUsageKWH" required><br>
 	    </div>
 		
 		<div class="input-containers">
-	    	<label for="savingMethods">4. Methods/Steps used to save electricity:</label><br>
-        	<textarea id="savingMethods" name="savingMethods" rows="4" required></textarea><br>
+	    	<label for="electricityMethods">4. Methods/Steps used to save electricity:</label><br>
+        	<textarea id="" name="electricityMethods" rows="4" required></textarea><br>
 	    </div>
         
         <div class="input-containers">
-	    	<label for="savingPractices">5. Electricity saving practices at home:</label><br>
-        	<textarea id="savingPractices" name="savingPractices" rows="4" required></textarea><br>
+	    	<label for="electricityPractices">5. Electricity saving practices at home:</label><br>
+        	<textarea id="electricityPractices" name="electricityPractices" rows="4" required></textarea><br>
 	    </div>
         
     </div>
@@ -112,12 +112,12 @@
     <div class="column" style="grid-column: 2;">
     	<div class="input-containers">
 	    	<label for="monthYear">6. Month/Year:</label><br>
-        	<input type="text" id="monthYear" name="monthYear" required><br>
+        	<input type="text" id="electricityMonth" name="electricityMonth" required><br>
 	    </div>
         
         <div class="input-containers">
 	    	<label for="proportionalFactor">7. Proportional Factor:</label><br>
-        	<input type="text" id="proportionalFactor" name="proportionalFactor" required><br>
+        	<input type="text" id="electricityPropFactor" name="electricityPropFactor" required><br>
 	    </div>
         
         <div class="input-containers">
@@ -125,7 +125,7 @@
             <div class="file-drop" id="fileDrop">
             	<span class="file-icon">&#128196;</span><br>
                 <span>Drag and drop your file here or click to choose</span>
-                <input type="file" id="uploadBill" name="uploadBill" accept=".jpg, .jpeg, .pdf" class="file-input" required>
+                <input type="file" id="electricityBill" name="electricityBill" accept=".jpg, .jpeg, .pdf" class="file-input" required>
             </div>
         </div>
         
