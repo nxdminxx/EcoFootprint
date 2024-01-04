@@ -117,12 +117,17 @@
               </div>
           </form>
           
-          <script>
-			function redirectToTermsAndCondition() {
-			// Redirect to TermsAndCondition.jsp
-			window.location.href = 'termRegister.jsp';
-			}
-		 </script>
+<script>
+    function goBack() {
+        // Implement your back button logic here
+        alert('Go back logic goes here');
+    }
+
+    function submitForm() {
+        // Implement your form submission logic here
+        alert('Form submitted!');
+    }
+</script>
           
           
           
