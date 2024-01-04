@@ -9,15 +9,15 @@ import java.util.List;
 
 import my.ip.ecofootprint.DAO.WaterDAO;
 import my.ip.ecofootprint.model.Water;
+import my.ip.ecofootprint.service.ElectricityService;
+import my.ip.ecofootprint.service.WaterService;
 
 @Controller
 @RequestMapping("/waterForm")
 public class WaterController {
 
     @Autowired
-    private WaterDAO waterService;
-    
-    private static AtomicInteger waterIdCounter = new AtomicInteger(1);
+    private WaterService waterService;
     
     @RequestMapping("/listWater")
     public String listWater(Model model) {
@@ -56,11 +56,8 @@ public class WaterController {
             long WaterPropFactorData = Long.parseLong(WaterPropFactor);
             byte[] WaterBillData = WaterBill.getBytes();
 
-            // Generate a unique water ID
-            int waterId = waterIdCounter.getAndIncrement();
-
             // Create Water object
-            Water water = new Water(waterId, WaterNumOfDaysData, WaterUsageRMData, WaterUsageM3Data, WaterMethods, WaterPractices, WaterMonth, WaterPropFactorData, WaterBillData);
+            Water water = new Water(0, WaterNumOfDaysData, WaterUsageRMData, WaterUsageM3Data, WaterMethods, WaterPractices, WaterMonth, WaterPropFactorData, WaterBillData);
 
             // Add water data
             waterService.addWater(water);
@@ -119,15 +116,17 @@ public class WaterController {
         Water water = waterService.getWaterById(waterId);
 
         if (water != null) {
-            double carbonResult = waterService.calculateWaterCarbonFootprint(waterId);
+            // Retrieve carbon result without recalculating
+            double carbonResult = water.getCarbonResult();
+
             model.addAttribute("water", water);
             model.addAttribute("carbonResult", carbonResult);
 
-            return "water/viewWaterDetail"; 
+            return "water/viewWaterDetail";
         } else {
             // if waterId not found
             model.addAttribute("errorMessage", "Water data not found");
-            return "/error"; 
+            return "/error";
         }
     }
     
@@ -146,15 +145,10 @@ public class WaterController {
             return "/water/error";
         }
     }
-
-    private int createWaterId() {
-        // Incrementing the counter to get a unique ID
-        return waterIdCounter.getAndIncrement();
-    }
     
     @RequestMapping("/calculateWaterCarbonFootprint")
     public String calculateWaterCarbonFootprint(@RequestParam int waterId, Model model) {
-        double waterCarbonFootprint = waterService.calculateWaterCarbonFootprint(waterId);
+        double waterCarbonFootprint = waterService.calculateWater(waterId);
         model.addAttribute("waterCarbonFootprint", waterCarbonFootprint);
 
         return "water/calculateResult";

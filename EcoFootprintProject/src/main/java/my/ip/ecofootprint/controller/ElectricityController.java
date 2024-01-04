@@ -69,7 +69,7 @@ public class ElectricityController {
    
         electricityService.addElectricity(electricity);
 
-        return "redirect:/product/list";
+        return "redirect:/product/list"; //shud masuk dlm /MyCarbonData
     }catch(NumberFormatException e) {
     	return "/water/error";
     }
@@ -108,7 +108,7 @@ public class ElectricityController {
         Electricity electricity = electricityService.getElectricityById(electricityId);
 
         if (electricity != null) {
-            double carbonResult = electricityService.calculateElectricityCarbonFootprint(electricityId);
+            double carbonResult = electricityService.calculateElectricityCarbonFootprint(electricityId);  //electricity.getCarbonResult() piwitttt
             model.addAttribute("electricity", electricity);
             model.addAttribute("carbonResult", carbonResult);
 
@@ -135,9 +135,10 @@ public class ElectricityController {
         return "/electricity/error";
 
     }
+    
     @RequestMapping("/calculateElectricityCarbonFootprint")
     public String calculateElectricityCarbonFootprint(@RequestParam int electricityId, Model model) {
-        double electricityCarbonFootprint = electricityService.calculateWaterCarbonFootprint(electricityId);
+        double electricityCarbonFootprint = electricityService.calculateWaterCarbonFootprint(electricityId); //calculateElectricity
         model.addAttribute("waterCarbonFootprint", electricityCarbonFootprint);
 
         return "electricity/calculateResult";
