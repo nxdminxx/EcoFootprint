@@ -2,7 +2,7 @@ package my.ip.ecofootprint.model;
 
 public class Electricity {
 	private int electricityId;
-	private int electrictyNumOfDays;
+	private int electricityNumOfDays;
 	private double electricityUsageRM;
 	private double electricityUsageKWH;
 	private String electricityMethods;
@@ -10,13 +10,37 @@ public class Electricity {
 	private String electricityMonth;
 	private long electricityPropFactor;
 	private byte[] electricityBill;
+	private double carbonResult;
 	
-	public int getElectrictyNumOfDays() {
-		return electrictyNumOfDays;
+	public Electricity() {
+			
+	    }
+	
+	public Electricity(int electricityId ,int electricityNumOfDays, double electricityUsageRM, double electricityUsageM3, String electricityMethods, String electricityPractices, String electricityMonth, long electricityPropFactor, byte[] electricityBill) {
+		  this.electricityId = electricityId;
+		  this.electricityNumOfDays = electricityNumOfDays;
+		  this.electricityUsageRM = electricityUsageRM;
+		  this.electricityUsageKWH = electricityUsageM3;
+		  this.electricityMethods = electricityMethods;
+		  this.electricityPractices = electricityPractices;
+		  this.electricityMonth = electricityMonth;
+		  this.electricityPropFactor = electricityPropFactor;
+		  this.electricityBill = electricityBill;
+	}
+	
+	public int getElectricityId() {
+		return electricityId;
+	}
+	public void setElectricityId(int electricityId) {
+		this.electricityId = electricityId;
+	}
+	
+	public int getElectricityNumOfDays() {
+		return electricityNumOfDays;
 	}
 
-	public void setElectrictyNumOfDays(int electrictyNumOfDays) {
-		this.electrictyNumOfDays = electrictyNumOfDays;
+	public void setElectricityNumOfDays(int electrictyNumOfDays) {
+		this.electricityNumOfDays = electrictyNumOfDays;
 	}
 
 	public double getElectricityUsageRM() {
@@ -73,4 +97,11 @@ public class Electricity {
 	public void setElectricityBill(byte[] electricityBill) {
 		this.electricityBill = electricityBill;
 	}
+	 public double getCarbonResult() {
+		return carbonResult;
+		 }
+
+	 public void setCarbonResult(double carbonResult) {
+		 this.carbonResult = carbonResult;
+		 }
 }
