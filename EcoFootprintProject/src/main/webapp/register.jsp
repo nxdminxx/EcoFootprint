@@ -14,10 +14,18 @@
 
 <style>
 
-body {
-  background: #3230AC;
-  background: linear-gradient(to right, #0062E6, #33AEFF);
-}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("img/bg.png" ); /* Replace 'your-background-image.jpg' with the path to your image */
+    		background-size: cover;
+    		background-position: center;
+        }
 
 
 
