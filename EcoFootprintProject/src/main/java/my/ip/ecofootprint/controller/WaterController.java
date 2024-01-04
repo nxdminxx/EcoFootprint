@@ -16,7 +16,7 @@ public class WaterController {
     @Autowired
     private WaterService waterService;
     
-    pprivate static AtomicInteger waterIdCounter = new AtomicInteger(1);
+    private static AtomicInteger waterIdCounter = new AtomicInteger(1);
     
     @RequestMapping("/listWater")
     public String listWater(Model model) {
@@ -33,14 +33,6 @@ public class WaterController {
         model.addAttribute("mode", "add");
         model.addAttribute("water", new Water(0, 0, 0, 0, null, null, null, 0, null));
         
-        return "water/formWater";
-    }
-
-    @RequestMapping("/formEditWater")
-    public String viewEditForm(@RequestParam int WaterId, Model model) {
-        Water water = waterService.getWaterById(WaterId);
-        model.addAttribute("water", water);
-        model.addAttribute("mode", "edit");
         return "water/formWater";
     }
 
@@ -80,53 +72,90 @@ public class WaterController {
             return "/water/error";
         }
     }
+    
+    	//user cannot edit or update the data   
+//    @RequestMapping("/formEditWater")
+//    public String viewEditForm(@RequestParam int WaterId, Model model) {
+//        Water water = waterService.getWaterById(WaterId);
+//        model.addAttribute("water", water);
+//        model.addAttribute("mode", "edit");
+//        return "water/editWater";
+//    }
+//
+//    @RequestMapping("/editWater")
+//    public String editWater(
+//            @RequestParam int waterId,
+//            @RequestParam String numOfDays,
+//            @RequestParam String usageRM,
+//            @RequestParam String usageM3,
+//            @RequestParam String methods,
+//            @RequestParam String practices,
+//            @RequestParam String month,
+//            @RequestParam String propFactor,
+//            @RequestParam String bill) {
+//
+//        // Retrieve the current Water object from the service
+//        Water existingWater = waterService.getWaterById(waterId);
+//
+//        // Update the fields with the new values
+//        existingWater.setWaterNumOfDays(Integer.parseInt(numOfDays));
+//        existingWater.setWaterUsageRM(Double.parseDouble(usageRM));
+//        existingWater.setWaterUsageM3(Double.parseDouble(usageM3));
+//        existingWater.setWaterMethods(methods);
+//        existingWater.setWaterPractices(practices);
+//        existingWater.setWaterMonth(month);
+//        existingWater.setWaterPropFactor(Long.parseLong(propFactor));
+//        existingWater.setWaterBill(bill.getBytes());
+//
+//        // Update the Water object in the service
+//        waterService.updateWater(existingWater);
+//
+//        return "redirect:/MyCarbonData/list";
+//    }
 
-    @RequestMapping("/editWater")
-    public String editWater(
-            @RequestParam int waterId,
-            @RequestParam String numOfDays,
-            @RequestParam String usageRM,
-            @RequestParam String usageM3,
-            @RequestParam String methods,
-            @RequestParam String practices,
-            @RequestParam String month,
-            @RequestParam String propFactor,
-            @RequestParam String bill) {
+    @RequestMapping("/viewWaterDetail")
+    public String viewWaterDetail(@RequestParam int waterId, Model model) {
+        Water water = waterService.getWaterById(waterId);
 
-        // Retrieve the current Water object from the service
-        Water existingWater = waterService.getWaterById(waterId);
+        if (water != null) {
+            double carbonResult = waterService.calculateWaterCarbonFootprint(waterId);
+            model.addAttribute("water", water);
+            model.addAttribute("carbonResult", carbonResult);
 
-        // Update the fields with the new values
-        existingWater.setWaterNumOfDays(Integer.parseInt(numOfDays));
-        existingWater.setWaterUsageRM(Double.parseDouble(usageRM));
-        existingWater.setWaterUsageM3(Double.parseDouble(usageM3));
-        existingWater.setWaterMethods(methods);
-        existingWater.setWaterPractices(practices);
-        existingWater.setWaterMonth(month);
-        existingWater.setWaterPropFactor(Long.parseLong(propFactor));
-        existingWater.setWaterBill(bill.getBytes());
-
-        // Update the Water object in the service
-        waterService.updateWater(existingWater);
-
-        return "redirect:/MyCarbonData/list";
+            return "water/viewWaterDetail"; 
+        } else {
+            // if waterId not found
+            model.addAttribute("errorMessage", "Water data not found");
+            return "/error"; 
+        }
     }
-
+    
     @RequestMapping("/deleteWater")
     public String deleteWater(@RequestParam int waterId, Model model) {
-    	
-        boolean success = waterService.deleteWater(waterId);
+        try {
+            boolean success = waterService.deleteWater(waterId);
 
-        if (success) {
-            return "redirect:/MyCarbonData/list";
+            if (success) {
+                return "redirect:/MyCarbonData/list";
+            } else {
+                model.addAttribute("errorMessage", "Deletion Failed! The data doesn't exist");
+                return "/water/error";
+            }
+        } catch (Exception e) {
+            return "/water/error";
         }
-
-        model.addAttribute("errorMessage", "Deletion Failed! The data doesn't exist");
-        return "/water/error";
     }
 
     private int createWaterId() {
         // Incrementing the counter to get a unique ID
         return waterIdCounter.getAndIncrement();
+    }
+    
+    @RequestMapping("/calculateWaterCarbonFootprint")
+    public String calculateWaterCarbonFootprint(@RequestParam int waterId, Model model) {
+        double waterCarbonFootprint = waterService.calculateWaterCarbonFootprint(waterId);
+        model.addAttribute("waterCarbonFootprint", waterCarbonFootprint);
+
+        return "water/calculateResult";
     }
 }

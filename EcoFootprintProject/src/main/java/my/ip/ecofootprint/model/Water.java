@@ -11,8 +11,12 @@ public class Water {
 	private String waterMonth;
 	private long waterPropFactor;
 	private byte[] waterBill;
+	private double carbonResult;
 	
-
+	public Water() {
+		
+    }
+	
 	public Water(int waterId ,int waterNumOfDays, double waterUsageRM, double waterUsageM3, String waterMethods, String waterPractices, String waterMonth, long waterPropFactor, byte[] waterBill) {
 		  this.waterId = waterId;
 		  this.waterNumOfDays = waterNumOfDays;
@@ -95,5 +99,13 @@ public class Water {
 	public void setWaterBill(byte[] waterBill) {
 		this.waterBill = waterBill;
 	}
+	
+	 public double getCarbonResult() {
+	    return carbonResult;
+	 }
+
+	 public void setCarbonResult(double carbonResult) {
+		 this.carbonResult = carbonResult;
+	 }
 	
 }

@@ -12,5 +12,7 @@ public interface WaterService {
 	 Water updateWater(Water water);
 	 public boolean deleteWater(int waterId);
 	 double calculateWater(int waterId);
+	 int getWaterIdByUserId(int userId);
+	 List<Water> getWaterByUserIdAndMonth(int userId, String month);
 	 
 }
