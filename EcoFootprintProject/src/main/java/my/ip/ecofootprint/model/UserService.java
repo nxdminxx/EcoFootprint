@@ -10,11 +10,17 @@ import java.util.List;
 
 import my.ip.ecofootprint.DAO.userDAO;
 import my.ip.ecofootprint.model.User;
+import my.ip.ecofootprint.repository.Autowired;
+import my.ip.ecofootprint.repository.JdbcTemplate;
 
 public class UserService implements userDAO {
+	
     private static final String JDBC_URL = "jdbc:mysql://your_mysql_host:your_mysql_port/your_database_name";
     private static final String JDBC_USER = "your_mysql_username";
     private static final String JDBC_PASSWORD = "your_mysql_password";
+    
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public List<User> getAllUsers() {

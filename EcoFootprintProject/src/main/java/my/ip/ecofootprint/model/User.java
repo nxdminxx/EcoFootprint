@@ -1,7 +1,7 @@
 package my.ip.ecofootprint.model;
 
 public class User {
-    private int userId; // Primary key
+    private int userId;
     private String username;
     private String password;
     private String role;
@@ -12,6 +12,9 @@ public class User {
     private String status;
     private String address;
     private String category;
+    private int waterId;
+    private int electricityId;
+    private int recycleId;
 
     public User() {
         this.userId = 0; // Default value, assuming 0 is not a valid user ID
