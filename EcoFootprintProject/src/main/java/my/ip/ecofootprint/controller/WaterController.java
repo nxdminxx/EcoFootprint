@@ -6,15 +6,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
+
+import my.ip.ecofootprint.DAO.WaterDAO;
 import my.ip.ecofootprint.model.Water;
-import my.ip.ecofootprint.service.WaterService;
 
 @Controller
 @RequestMapping("/waterForm")
 public class WaterController {
 
     @Autowired
-    private WaterService waterService;
+    private WaterDAO waterService;
     
     private static AtomicInteger waterIdCounter = new AtomicInteger(1);
     
