@@ -214,18 +214,18 @@
             <div class="user-info">
                 <img src="img/profile1.jpg" alt="Profile" class="user-image">
                 <div class="user-name">
-                    <p style="font-size: 10px">User ID: 555</p>
-                    <p style="font-weight: bold;">Irdina Sofea</p>
-                </div>
+                    	<p style="font-size: 10px">User ID: ${userId}</p>
+                    	<p style="font-weight: bold;">${userName}</p>
+                    </div>
             </div>
 
             <ul>
-                <li><a href="UserDashboard.js">Dashboard</a></li>
-                <li><a href="footprintForm.jsp">Footprint Form</a></li>
-                <li><a href="myCarbonData.jsp">My Carbon Data</a></li>
-                <br><br>
-                <li><a href="login.jsp">Logout</a></li>
-            </ul>
+	            <li><a href="<c:url value='/UserDashboard.js'/>">Dashboard</a></li>
+	            <li><a href="<c:url value='/footprintForm.jsp'/>">Footprint Form</a></li>
+	            <li><a href="<c:url value='/myCarbonData'/>">My Carbon Data</a></li>
+	            <br><br>
+	            <li><a href="<c:url value='/login.jsp'/>">Logout</a></li>
+	        </ul>
         </div>
     </div>
 
