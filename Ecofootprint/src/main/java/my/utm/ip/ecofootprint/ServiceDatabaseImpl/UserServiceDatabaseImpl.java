@@ -1,5 +1,6 @@
 package my.utm.ip.ecofootprint.ServiceDatabaseImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,8 +21,12 @@ public class UserServiceDatabaseImpl implements UserService {
 
 	@Override
 	public List<User> getAllUsers() {
-		UserDAO dao = new repo.getAllWater();
-		return new User(dao);
+		List<UserDAO> userDAOs = repo.getAllUsers();
+		List<User> users = new ArrayList<>();
+		for (UserDAO userDAO : userDAOs) {
+			users.add(new User(userDAO));
+		}
+		return users;
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package my.utm.ip.ecofootprint.ServiceDatabaseImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,12 @@ public class RecycleServiceDatabaseImpl implements RecycleService {
 
 	@Override
 	public List<Recycle> getAllRecycle() {
-		RecycleDAO dao = repo.getAllRecycle();
-		return new Recycle(dao);
+		List<RecycleDAO> recycleDAOs = repo.getAllRecycle();
+		List<Recycle> recycleList = new ArrayList<>();
+		for (RecycleDAO recycleDAO : recycleDAOs) {
+			recycleList.add(new Recycle(recycleDAO));
+		}
+		return recycleList;
 	}
 
 	// get data form db to view
