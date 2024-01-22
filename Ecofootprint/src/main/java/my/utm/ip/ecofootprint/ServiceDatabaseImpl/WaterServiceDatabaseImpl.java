@@ -1,5 +1,6 @@
 package my.utm.ip.ecofootprint.ServiceDatabaseImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,12 @@ public class WaterServiceDatabaseImpl implements WaterService {
 
 	@Override
 	public List<Water> getAllWater() {
-		WaterDAO dao = repo.getAllWater();
-		return new Water(dao);
+		List<WaterDAO> waterDAOs = repo.getAllWater();
+		List<Water> waters = new ArrayList<>();
+		for (WaterDAO waterDAO : waterDAOs) {
+			waters.add(new Water(waterDAO));
+		}
+		return waters;
 	}
 
 	// get data form db to view

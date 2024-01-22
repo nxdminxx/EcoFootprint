@@ -1,5 +1,6 @@
 package my.utm.ip.ecofootprint.ServiceDatabaseImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +18,12 @@ public class ElectricityServiceDatabaseImpl implements ElectricityService {
 
 	@Override
 	public List<Electricity> getAllElectricity() {
-		List<ElectricityDAO> dao = repo.getAllElectricity();
-		return new ELectricity(dao);
+		List<ElectricityDAO> electricityDAOs = repo.getAllElectricity();
+		List<Electricity> electricityList = new ArrayList<>();
+		for (ElectricityDAO electricityDAO : electricityDAOs) {
+			electricityList.add(new Electricity(electricityDAO));
+		}
+		return electricityList;
 	}
 
 	// get data form db to view
