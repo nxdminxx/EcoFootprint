@@ -1,0 +1,301 @@
+@charset "ISO-8859-1";
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #92bdf5;
+}
+
+#dashboard-container {
+    display: flex;
+    width: 1400px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #508cd1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#sidebar-container {
+    display: flex;
+    width: 200px;
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#content-container {
+    display: flex;
+    width: 1100px;
+    padding: 20px;
+    margin-left: 20px;
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+#sidebar {
+    width: 200px;
+    padding-right: 20px;
+}
+
+#sidebar a {
+	color:	#757575;
+	text-decoration: none;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sidebar ul li {
+    padding: 10px;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    transition: background-color 0.3s ease;
+}
+
+#sidebar ul li:hover {
+	color:	black;
+    background-color: #e6e6e6;
+    border-radius: 5px; /* Add rounded corners on hover */
+}
+
+#sidebar ul li:hover a {
+	color:	black;
+}
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-image {
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.user-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.user-name {
+    flex-grow: 1;
+}
+
+.user-name p {
+    margin: 0;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.card,
+.card-large,
+.card-button1,
+.card-button2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.card-welcome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+    align-items: center;
+}
+
+.card-graph{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px;
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: box-shadow 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.card {
+    width: 210px;
+    height: 90px;
+}
+
+.card-large {
+    width: 290px;
+    height: 90px;
+}
+
+.card-button1,
+.card-button2 {
+    width: 290px;
+    height: 90px;
+}
+
+.card-welcome {
+    width: 715px;
+    height: 90px;
+}
+
+.card-graph {
+    width: 715px;
+    height: 200px;
+}
+
+.card:hover,
+.card-large:hover,
+.card-graph:hover,
+.card-welcome:hover,
+.card-button1:hover,
+.card-button2:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.card-details {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.card-button-details1 {
+  	flex-grow: 1;
+    text-align: right;
+    font-weight: bold;
+    padding-right: 10px;
+}
+
+.card-button-details2 {
+  	flex-grow: 1;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 10px;
+}
+
+.card p,
+.card-large p,
+.card-graph p,
+.card-welcome p,
+.card-button1 p,
+.card-button2 p {
+    margin: 0;
+}
+
+.card p,
+.card-large p,
+.card-graph p {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold; 
+}
+.card-welcome-title {
+    flex-grow: 1;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+.card-graph-title {
+    flex-grow: 1;
+    text-align: left;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.card-title,
+.card-large-title {
+    font-weight: bold;
+}
+
+.card-image img,
+.card img,
+.card-large img {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.card-graph img {
+    width: 700px;
+    height: 180px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.card-image {
+    padding-left: 5px;
+}
+
+.card-welcome img {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.card-button1 img {
+    width: 110px;
+    height: 110px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+.card-button2 img {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    margin-right: 10px;
+}
+
+button {
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+.my-button1 {
+    background-color: #FFE380; 
+    color: #BE5000;
+    font-size: 16px; 
+    border-radius: 10px; 
+    transition: background-color 0.3s ease;
+}
+
+.my-button2 {
+    background-color: #FF7F7F; 
+    color: white;
+    font-size: 16px; 
+    border-radius: 10px; 
+    transition: background-color 0.3s ease; 
+}
+
+.my-button1:hover {
+    background-color: #FDB137; 
+    color: white;
+}
+
+.my-button2:hover {
+    background-color: #DE5D83; 
+}
